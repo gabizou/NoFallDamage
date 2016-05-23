@@ -7,7 +7,7 @@ import org.spongepowered.api.event.entity.DamageEntityEvent;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.plugin.Plugin;
 
-@Plugin(id = "no-fall-damage",
+@Plugin(id = "nofalldamage",
         name = "NoFallDamage",
         authors = "gabizou",
         version = "1.0.0",
