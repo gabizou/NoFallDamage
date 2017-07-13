@@ -24,6 +24,7 @@
  */
 package com.gabizou;
 
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.cause.entity.damage.DamageTypes;
 import org.spongepowered.api.event.cause.entity.damage.source.DamageSource;
@@ -31,7 +32,6 @@ import org.spongepowered.api.event.entity.DamageEntityEvent;
 import org.spongepowered.api.event.filter.Getter;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.plugin.Plugin;
-import org.spongepowered.api.service.permission.Subject;
 
 @Plugin(id = "nofalldamage",
         name = "NoFallDamage",
@@ -42,7 +42,7 @@ import org.spongepowered.api.service.permission.Subject;
 public class NoFallDamage {
 
     @Listener
-    public void onFall(DamageEntityEvent event, @Root DamageSource source, @Getter("getTargetEntity") Subject subject) {
+    public void onFall(DamageEntityEvent event, @Root DamageSource source, @Getter("getTargetEntity") Player subject) {
         event.setCancelled(source.getType().equals(DamageTypes.FALL) && subject.hasPermission("nofalldamage.takenodamage"));
     }
 
