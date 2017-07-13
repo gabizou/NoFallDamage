@@ -1,26 +1,41 @@
+buildscript {
+    repositories {
+        maven {
+            name = 'gradle-plugins'
+            url = 'https://plugins.gradle.org/m2'
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.net.minecrell:licenser:0.3'
+    }
+}
+
 plugins {
-    id 'org.spongepowered.plugin' version '0.5.2'
-    id 'java'
+    id 'org.spongepowered.plugin' version '0.8.1'
+    id 'net.minecrell.licenser' version '0.3'
+
 }
 
-group 'com.gabizou'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-        name 'Sonatype'
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
-    maven {
-        name 'Sponge maven repo'
-        url 'http://repo.spongepowered.org/maven'
-    }
-}
+group = pluginGroup
+version = pluginVersion
+ext.organization = 'Gabriel Harris-Rouquette'
+ext.url = 'https://gabizou.com/'
 
 dependencies {
-    compile "org.spongepowered:spongeapi:4.1.0-SNAPSHOT"
+    compile 'org.spongepowered:spongeapi:5.2.0-SNAPSHOT'
 }
+
+// License header formatting
+license {
+    ext {
+        name = 'NoFallDamage'
+        organization = project.organization
+        url = project.url
+    }
+
+    header = project.file('HEADER.txt')
+    include '**/*.java'
+    newLine = false
+}
+
+sponge.plugin.id = pluginId
